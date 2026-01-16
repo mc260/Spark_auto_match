@@ -1,0 +1,26 @@
+<!--
+  机械臂与摄像头之间的校准功能。注意摄像头需要反着装，垂直向下。使用一个蓝色圆贴在吸盘的正上方当校准点。
+ -->
+<launch> 	
+  <!-- Camera -->
+  <arg name="camera_type_tel" default="d435" doc="camera type [astrapro, astra]"/>
+  <arg name="lidar_type_tel" default="ydlidar_g6" doc="lidar type [3iroboticslidar2, ydlidar_g2]"/>
+  
+  <!--UARM机械臂-->
+  <include file="$(find swiftpro)/launch/pro_control_nomoveit.launch"/>
+
+  <!--spark驱动，机器人描述，相机，底盘-->
+  <include file="$(find spark_bringup)/launch/driver_bringup.launch">
+  	<arg name="camera_type_tel"	value="$(arg camera_type_tel)" />
+  	<arg name="lidar_type_tel" value="$(arg lidar_type_tel)"/>
+  </include>
+
+  <!--摄像头订阅与视觉定位-->
+  <node pkg="spark_tf_arm_move" type="spark_tf_arm_move.py" name="spark_tf_arm_move_node" output="screen"/>
+ 
+   <!--在rviz显示-->
+  <arg name="rvizconfig" default="$(find spark_carry_object)/rviz/carry_object.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true"/>
+
+</launch>
+

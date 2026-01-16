@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/spark/spark_noetic/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/camera/astra_camera/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/base/cereal_port/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/darknet_ros/darknet_ros/include/**",
+        "/home/spark/spark_noetic/src/spark_app/follower_velocity_smoother/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/camera/realsense-ros/realsense2_camera/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/arm/sagittarius_arm_ros/sdk_sagittarius_arm/include/**",
+        "/home/spark/spark_noetic/src/spark/serial/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/base/spark_base/include/**",
+        "/home/spark/spark_noetic/src/spark_app/spark_slam/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/vision_msgs/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
