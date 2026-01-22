@@ -1233,7 +1233,20 @@ navigation_grasp(){
 	roslaunch move2grasp move2grasp.launch camera_type_tel:=${CAMERATYPE}  lidar_type_tel:=${LIDARTYPE}
 
 }
+#自动赛示例程序
+spark_auto_game(){
+	echo -e "${Info}" 
+	echo -e "${Info}夺宝奇兵自动赛示例程序" 
+	PROJECTPATH=$(cd `dirname $0`; pwd)
+	source ${PROJECTPATH}/devel/setup.bash
 
+	echo -e "${Info}退出请输入：Ctrl + c " 
+	echo -e "${Info}" 
+	echo && stty erase ^? && read -p "按回车键（Enter）开始：" 
+	print_command "开始运行夺宝奇兵自动赛示例程序 "
+	roslaunch auto_match auto_match.launch
+
+}
 			
 		
 qrcode_transfer_files(){
@@ -1391,7 +1404,8 @@ echo -e "
   ${Green_font_prefix} 30.${Font_color_suffix} 机器人肢体识别
   ${Green_font_prefix} 31.${Font_color_suffix} 机器人进行gazebo本体模拟仿真
   ${Green_font_prefix} 32.${Font_color_suffix} 抓取视频中移动的物体并进行背景切换
-  ${Green_font_prefix} 33.${Font_color_suffix} 在3m*3m的地图中进行自动导航抓取 
+  ${Green_font_prefix} 33.${Font_color_suffix} 在3m*3m的地图中进行自动导航抓取
+  ${Green_font_prefix} 34.${Font_color_suffix} 夺宝奇兵(自动赛)示例程序
 ————————————"
 check_camera_game
 echo -e "
@@ -1461,6 +1475,9 @@ case "$num" in
 	;;
 	33)
 	navigation_grasp
+	;;
+	34)
+	spark_auto_game
 	;;
 	100)
 	tell_us
