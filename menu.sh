@@ -1244,6 +1244,7 @@ spark_auto_game(){
 	echo -e "${Info}" 
 	echo && stty erase ^? && read -p "按回车键（Enter）开始：" 
 	print_command "开始运行夺宝奇兵自动赛示例程序 "
+	print_command "auto_match auto_match.launch"
 	roslaunch auto_match auto_match.launch
 
 }
