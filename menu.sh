@@ -946,7 +946,9 @@ spark_carry_game(){
 	echo -e "${Info}请选择方式：
 	  ${Green_font_prefix}1.${Font_color_suffix} 手动模式
 	  ${Green_font_prefix}2.${Font_color_suffix} 自动模式
-	  ${Green_font_prefix}3.${Font_color_suffix} 退出请输入：Ctrl + c" 
+	  ${Green_font_prefix}3.${Font_color_suffix} 跑图
+	  ${Green_font_prefix}4.${Font_color_suffix} 机械臂标定
+	  ${Green_font_prefix}5.${Font_color_suffix} 退出请输入：Ctrl + c" 
 	echo && stty erase ^? && read -p "请输入数字 [1-2]：" armnum
 	case "$armnum" in
 		1)
@@ -954,6 +956,12 @@ spark_carry_game(){
 		;;
 		2)
 		roslaunch move2grasp move2grasp.launch camera_type_tel:=${CAMERATYPE}  lidar_type_tel:=${LIDARTYPE}
+		;;
+		3)
+		roslaunch spark_hm_task_match run.launch camera_type_tel:=${CAMERATYPE}  lidar_type_tel:=${LIDARTYPE}
+		;;
+		4)
+		roslaunch spark_hm_task_match cali.launch cali_z_axis:="32" camera_type_tel:=${CAMERATYPE}  lidar_type_tel:=${LIDARTYPE}
 		;;
 		*)
 		echo -e "${Error} 错误，请填入正确的数字"
@@ -1233,6 +1241,7 @@ navigation_grasp(){
 	roslaunch move2grasp move2grasp.launch camera_type_tel:=${CAMERATYPE}  lidar_type_tel:=${LIDARTYPE}
 
 }
+
 #自动赛示例程序
 spark_auto_game(){
 	echo -e "${Info}" 
@@ -1246,6 +1255,40 @@ spark_auto_game(){
 	print_command "开始运行夺宝奇兵自动赛示例程序 "
 	print_command "auto_match auto_match.launch"
 	roslaunch auto_match auto_match.launch
+
+}
+
+#数据集拍摄程序
+spark_data_collection(){
+	echo -e "${Info}" 
+	echo -e "${Info}数据集拍摄程序" 
+	PROJECTPATH=$(cd `dirname $0`; pwd)
+	source ${PROJECTPATH}/devel/setup.bash
+
+	echo -e "${Info}退出请输入：Ctrl + c " 
+	echo -e "${Info}" 
+	echo && stty erase ^? && read -p "按回车键（Enter）开始：" 
+	print_command "开始运行数据集拍摄程序 "
+	print_command "拍摄数据集将会保存在/tmp/Camera_video或/tmp/Camera_image目录下"
+	echo -e "${Info} " 
+	echo -e "${Info} 请选择拍摄模式："
+	echo -e "${Info} 1.视频"
+	echo -e "${Info} 2.图片"
+	echo && stty erase ^? && read -p "请输入数字 [1-2]：" armnum
+
+	case "$armnum" in
+		1)
+		print_command "roslaunch spark_teleop date_collection_video.launch camera_type_tel:=${CAMERATYPE} lidar_type_tel:=${LIDARTYPE} enable_arm_tel:=no"
+		roslaunch spark_teleop date_collection_video.launch camera_type_tel:=${CAMERATYPE} lidar_type_tel:=${LIDARTYPE} enable_arm_tel:=no
+		;;	
+		2)
+		print_command "roslaunch spark_teleop date_collection_image.launch camera_type_tel:=${CAMERATYPE} lidar_type_tel:=${LIDARTYPE} enable_arm_tel:=no"
+		roslaunch spark_teleop date_collection_image.launch camera_type_tel:=${CAMERATYPE} lidar_type_tel:=${LIDARTYPE} enable_arm_tel:=no
+		;;
+		*)
+		echo -e "${Error} 错误，请选择正确的拍摄模式"
+		;;
+	esac
 
 }
 			
@@ -1401,12 +1444,17 @@ echo -e "
   ${Green_font_prefix} 10.${Font_color_suffix} 深度学习进行物品检测
   ${Green_font_prefix} 11.${Font_color_suffix} 语音控制SPARK移动
   ${Green_font_prefix} 12.${Font_color_suffix} 给摄像头做标定
+  ${Green_font_prefix} 14.${Font_color_suffix} wifi
+  ${Green_font_prefix} 20.${Font_color_suffix} 夺宝奇兵
+  ${Green_font_prefix} 21.${Font_color_suffix} 夺宝奇兵进阶
+  ${Green_font_prefix} 22.${Font_color_suffix} 让SPARK通过机械臂进行视觉抓取 uarm
 ————————————
   ${Green_font_prefix} 30.${Font_color_suffix} 机器人肢体识别
   ${Green_font_prefix} 31.${Font_color_suffix} 机器人进行gazebo本体模拟仿真
   ${Green_font_prefix} 32.${Font_color_suffix} 抓取视频中移动的物体并进行背景切换
   ${Green_font_prefix} 33.${Font_color_suffix} 在3m*3m的地图中进行自动导航抓取
-  ${Green_font_prefix} 34.${Font_color_suffix} 夺宝奇兵(自动赛)示例程序
+  ${Green_font_prefix} 34.${Font_color_suffix} 夺宝奇兵自动赛示例程序
+  ${Green_font_prefix} 35.${Font_color_suffix} 数据集拍摄程序 
 ————————————"
 check_camera_game
 echo -e "
@@ -1459,11 +1507,17 @@ case "$num" in
 	13)
 	spark_hsv_detection
 	;;
+	14)
+	master_uri_setup
+	;;
 	20)
 	spark_carry_game
 	;;
 	21)
 	spark_sgr_game
+	;;
+	22)
+	spark_carry_obj_uarm
 	;;
 	30)
 	spark_tf_arm
@@ -1479,6 +1533,9 @@ case "$num" in
 	;;
 	34)
 	spark_auto_game
+	;;
+	35)
+	spark_data_collection
 	;;
 	100)
 	tell_us
