@@ -1,0 +1,23 @@
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# ROS build
+build/
+devel/
+install/
+log/
+
+# Dataset / cache
+*.pkl
+*.pt
+*.onnx
+
+# OS
+.DS_Store
+Thumbs.db
