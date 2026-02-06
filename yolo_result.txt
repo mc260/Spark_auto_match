@@ -1,0 +1,6 @@
+results
+└── results[0]
+    └── boxes (Boxes)
+        ├── xyxy[i]  -> 一个 bbox (Tensor[4])
+        ├── cls[i]   -> 一个 class id
+        └── conf[i]  -> 一个 score

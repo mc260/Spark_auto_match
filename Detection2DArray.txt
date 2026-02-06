@@ -1,0 +1,6 @@
+# Array of Detection2Ds
+# vision_msgs/msg/Detection2DArray.msg
+
+Header header # 整张图片的header
+
+Detection2D[] detections # 在C++里面是一个std::vector<Detection2D> 在Python里面是一个list

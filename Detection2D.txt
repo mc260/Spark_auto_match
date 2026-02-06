@@ -1,0 +1,22 @@
+# Single detection result for a 2D object
+
+std_msgs/Header header
+    uint32 seq # ros1 only
+    time stamp
+    string frame_id
+
+string id # ID of Object
+
+vision_msgs/BoundingBox2D bbox
+    geometry_msgs/Pose2D center
+        center.x
+        center.y
+        center.theta # angle
+    float64 size_x
+    float64 size_y
+
+vision_msgs/ObjectHypothesisWithPose[] results # 这个数组按class与这个目标的匹配度从高到低储存每一个class，但是这个顺序只是一个约定俗称的习惯
+    ObjectHypothesis hypothesis
+        string class_id
+        float64 score
+    geometry_msgs/PoseWithCovariance pose # almost no use

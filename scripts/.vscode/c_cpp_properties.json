@@ -1,0 +1,44 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/spark/spark_noetic/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/spark/spark_noetic/src/spark_app/ar_track_alvar/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/camera/astra_camera/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/base/cereal_port/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/darknet_ros/darknet_ros/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/dl_msgs/include/**",
+        "/home/spark/spark_noetic/src/spark_app/follower_velocity_smoother/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/object2grasp/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/camera/realsense-ros/realsense2_camera/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/arm/sagittarius_arm_ros/sdk_sagittarius_arm/include/**",
+        "/home/spark/spark_noetic/src/spark/serial/include/**",
+        "/home/spark/spark_noetic/src/spark_driver/base/spark_base/include/**",
+        "/home/spark/spark_noetic/src/spark_app/spark_slam/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/unit2_pointto/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/unit3_follow/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/unit4_voice/unit4_voicecontrol/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/unit5_tellnumber/include/**",
+        "/home/spark/spark_noetic/src/3rd_app/tensorflow_app/vision_msgs/include/**",
+        "/home/spark/spark_noetic/src/spark_app/voice_02/include/**",
+        "/home/spark/spark_noetic/src/spark_app/voice_03/include/**",
+        "/home/spark/spark_noetic/src/spark_app/voice_04/include/**",
+        "/home/spark/spark_noetic/src/spark_app/voice_05/include/**",
+        "/home/spark/spark_noetic/src/spark_app/voice_06/include/**",
+        "/home/spark/spark_noetic/src/spark_app/voice_07/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
