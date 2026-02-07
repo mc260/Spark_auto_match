@@ -174,8 +174,8 @@ class Detector:
             cls_id = int(cls[i])
             score = float(conf[i])
             # if use value in boxes straightly, just use boxes.cls[i].item(), 
-            # which means get the value from scalar tensor, safe for next step
-            # but this cls has been translated into a list, not a tensor
+            # which means get the scalar from tensor, safe for next step
+            # but this cls has been convert to a list, not a tensor
             detections.append({
                 "bbox": (x1, y1, x2, y2),
                 "cls_id": cls_id,
