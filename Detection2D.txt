@@ -15,7 +15,7 @@ vision_msgs/BoundingBox2D bbox
     float64 size_x
     float64 size_y
 
-vision_msgs/ObjectHypothesisWithPose[] results # 这个数组按class与这个目标的匹配度从高到低储存每一个class，但是这个顺序只是一个约定俗称的习惯
+vision_msgs/ObjectHypothesisWithPose[] results # 这个数组按class与这个目标的匹配度从高到低储存每一个class，但是这个顺序只是一个约定俗成的习惯
     ObjectHypothesis hypothesis
         string class_id
         float64 score
